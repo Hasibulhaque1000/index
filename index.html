@@ -5,6 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
 
 <title>Mohammad Hasibul Haque | Scientific Portfolio</title>
 
@@ -63,6 +64,9 @@ body.light{
   margin:0;
   padding:0;
   box-sizing:border-box;
+}
+
+html{
   scroll-behavior:smooth;
 }
 
@@ -75,9 +79,38 @@ body{
 
   overflow-x:hidden;
 
+  scroll-behavior:smooth;
+
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  text-rendering:optimizeLegibility;
+
   transition:
   background .4s ease,
   color .4s ease;
+
+}
+
+/* ================= PERFORMANCE ================= */
+
+section,
+.card,
+.hero-image img,
+.research-image,
+.dashboard-card,
+.skill-progress,
+nav,
+.contact-box{
+
+  will-change:
+  transform,
+  opacity;
+
+  transform:
+  translateZ(0);
+
+  backface-visibility:hidden;
 
 }
 
@@ -204,7 +237,11 @@ nav{
 
   z-index:1000;
 
-  transition:.4s ease;
+  transition:
+  background .5s ease,
+  backdrop-filter .5s ease,
+  padding .5s ease,
+  transform .5s ease;
 
   backdrop-filter:blur(18px);
 
@@ -395,9 +432,11 @@ section{
 
   font-size:6rem;
 
-  line-height:.95;
+  line-height:1.02;
 
-  letter-spacing:-4px;
+  letter-spacing:-2px;
+
+  font-weight:700;
 
   margin-bottom:25px;
 
@@ -703,9 +742,19 @@ section{
   display:grid;
 
   grid-template-columns:
-  repeat(auto-fit,minmax(300px,1fr));
+  repeat(3,1fr);
 
   gap:24px;
+
+}
+
+@media(max-width:900px){
+
+  .image-grid{
+
+    grid-template-columns:1fr;
+
+  }
 
 }
 
@@ -718,6 +767,10 @@ section{
   border:1px solid var(--border);
 
   transition:.35s ease;
+
+  will-change:transform;
+
+  transform:translateZ(0);
 
 }
 
@@ -779,10 +832,11 @@ section{
   opacity:0;
 
   transform:
-  translateY(60px)
-  scale(.98);
+  translateY(40px);
 
-  transition:1s ease;
+  transition:
+  opacity 1s cubic-bezier(.22,1,.36,1),
+  transform 1s cubic-bezier(.22,1,.36,1);
 
 }
 
@@ -791,8 +845,7 @@ section{
   opacity:1;
 
   transform:
-  translateY(0)
-  scale(1);
+  translateY(0);
 
 }
 
@@ -970,21 +1023,13 @@ footer{
 
 <body>
 
-<!-- ================= LOADER ================= -->
-
 <div class="loader" id="loader">
   <div class="loader-ring"></div>
 </div>
 
-<!-- ================= PROGRESS BAR ================= -->
-
 <div class="progress-bar" id="progressBar"></div>
 
-<!-- ================= PARTICLES ================= -->
-
 <canvas id="particles"></canvas>
-
-<!-- ================= NAV ================= -->
 
 <nav id="navbar">
 
@@ -1009,20 +1054,14 @@ footer{
 
 </nav>
 
-<!-- ================= THEME ================= -->
-
 <button class="theme-toggle" id="themeToggle">
 ☀️
 </button>
-
-<!-- ================= AI ASSISTANT ================= -->
 
 <div class="ai-assistant"
 onclick="openAssistant()">
 🤖
 </div>
-
-<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -1071,8 +1110,6 @@ onclick="openAssistant()">
 
 </section>
 
-<!-- ================= DASHBOARD ================= -->
-
 <section id="dashboard" class="reveal">
 
   <h2 class="section-title">
@@ -1110,8 +1147,6 @@ onclick="openAssistant()">
   </div>
 
 </section>
-
-<!-- ================= RESEARCH ================= -->
 
 <section id="research" class="reveal">
 
@@ -1170,8 +1205,6 @@ onclick="openAssistant()">
 
 </section>
 
-<!-- ================= RESEARCH GALLERY ================= -->
-
 <section class="reveal">
 
   <h2 class="section-title">
@@ -1180,20 +1213,11 @@ onclick="openAssistant()">
 
   <p class="section-subtitle">
 
-    Spectroscopy outputs, microscopy observations, and extracted microplastic contamination samples from current research investigations.
+    Microscopy observations and FTIR spectroscopy outputs from ongoing environmental contamination and polymer identification research.
 
   </p>
 
   <div class="image-grid">
-
-    <img src="sample 1.png"
-    class="research-image">
-
-    <img src="Sample 2.png"
-    class="research-image">
-
-    <img src="Sample 3.png"
-    class="research-image">
 
     <img src="microplastic1.jpeg"
     class="research-image">
@@ -1204,11 +1228,18 @@ onclick="openAssistant()">
     <img src="microplastic3.jpeg"
     class="research-image">
 
+    <img src="sample 2.png"
+    class="research-image">
+
+    <img src="Sample 3.png"
+    class="research-image">
+
+    <img src="sample 4.png"
+    class="research-image">
+
   </div>
 
 </section>
-
-<!-- ================= MODULES ================= -->
 
 <section id="modules" class="reveal">
 
@@ -1226,7 +1257,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Analytical Chemistry</h3>
-
       <p>
         Spectroscopy, chromatography, structural analysis, and laboratory analytical techniques.
       </p>
@@ -1234,7 +1264,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Molecular Biology</h3>
-
       <p>
         PCR, gel electrophoresis, recombinant DNA analysis, and bacterial transformation procedures.
       </p>
@@ -1242,7 +1271,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Toxicology</h3>
-
       <p>
         Environmental toxicology, exposure pathways, toxic effects, and contamination analysis.
       </p>
@@ -1250,7 +1278,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Microbiology</h3>
-
       <p>
         Laboratory culturing techniques, contamination control, sterile procedures, and microbial systems.
       </p>
@@ -1258,7 +1285,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Pharmacology</h3>
-
       <p>
         Drug interactions, pharmacodynamics, pharmacokinetics, and therapeutic mechanisms.
       </p>
@@ -1266,7 +1292,6 @@ onclick="openAssistant()">
 
     <div class="card">
       <h3>Scientific Research Methods</h3>
-
       <p>
         Research design, statistical analysis, laboratory reporting, and scientific communication.
       </p>
@@ -1275,8 +1300,6 @@ onclick="openAssistant()">
   </div>
 
 </section>
-
-<!-- ================= PUBLICATIONS ================= -->
 
 <section class="reveal">
 
@@ -1325,8 +1348,6 @@ onclick="openAssistant()">
   </div>
 
 </section>
-
-<!-- ================= SKILLS ================= -->
 
 <section id="skills" class="reveal">
 
@@ -1392,8 +1413,6 @@ onclick="openAssistant()">
 
 </section>
 
-<!-- ================= WHY HIRE ME ================= -->
-
 <section class="reveal">
 
   <h2 class="section-title">
@@ -1433,8 +1452,6 @@ onclick="openAssistant()">
   </div>
 
 </section>
-
-<!-- ================= CONTACT ================= -->
 
 <section id="contact" class="reveal">
 
@@ -1493,15 +1510,11 @@ onclick="openAssistant()">
 
 </section>
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
 
   © 2026 Mohammad Hasibul Haque — Scientific Portfolio
 
 </footer>
-
-<!-- ================= MODAL ================= -->
 
 <div class="modal" id="projectModal">
 
@@ -1551,8 +1564,6 @@ onclick="openAssistant()">
   </div>
 
 </div>
-
-<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
@@ -1676,29 +1687,34 @@ window.addEventListener("scroll", () => {
 const reveals =
 document.querySelectorAll(".reveal");
 
-function revealSections(){
+const observer =
+new IntersectionObserver(
 
-  reveals.forEach(section => {
+(entries)=>{
 
-    const top =
-    section
-    .getBoundingClientRect()
-    .top;
+entries.forEach(entry=>{
 
-    if(top < window.innerHeight - 100){
-      section.classList.add("active");
-    }
+if(entry.isIntersecting){
 
-  });
+entry.target.classList.add("active");
 
 }
 
-window.addEventListener(
-"scroll",
-revealSections
+});
+
+},
+
+{
+threshold:0.12
+}
+
 );
 
-revealSections();
+reveals.forEach(section=>{
+
+observer.observe(section);
+
+});
 
 /* ================= PARTICLES ================= */
 
