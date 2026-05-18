@@ -1,1263 +1,1867 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohammad Hasibul Haque — Pharmacology & Laboratory Sciences</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mohammad Hasibul Haque | Scientific Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ── TOKENS ──────────────────────────────────────────────── */
-:root {
-  --bg:        #f5f4f0;
-  --surface:   #eeece6;
-  --border:    rgba(0,0,0,0.08);
-  --text:      #1a1a18;
-  --muted:     #6b6b62;
-  --accent:    #2d5a3d;
-  --accent2:   #8fb89a;
-  --nav-bg:    rgba(245,244,240,0.85);
-  --card:      #ffffff;
-  --tag-bg:    rgba(45,90,61,0.08);
-  --tag-text:  #2d5a3d;
-  --shadow:    0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.06);
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
-  --transition: 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-[data-theme="dark"] {
-  --bg:       #0f100e;
-  --surface:  #181a16;
-  --border:   rgba(255,255,255,0.07);
-  --text:     #e8e6de;
-  --muted:    #8a8a7d;
-  --accent:   #7fb892;
-  --accent2:  #4a7a5a;
-  --nav-bg:   rgba(15,16,14,0.88);
-  --card:     #1e211c;
-  --tag-bg:   rgba(127,184,146,0.1);
-  --tag-text: #7fb892;
-  --shadow:   0 1px 3px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.3);
+
+/* ================= ROOT ================= */
+
+:root{
+
+  --bg:#050816;
+  --bg2:#091224;
+
+  --card:rgba(10,18,35,.74);
+
+  --text:#f5f8ff;
+  --muted:#9da8c5;
+
+  --accent:#4ea1ff;
+  --accent2:#7ed0ff;
+
+  --border:rgba(255,255,255,.08);
+
+  --shadow:
+  0 25px 70px rgba(0,0,0,.45);
+
 }
 
-/* ── RESET ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.65;
-  transition: background var(--transition), color var(--transition);
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+body.light{
 
-/* ── NAV ─────────────────────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5vw;
-  height: 64px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition);
-}
-.nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  opacity: 0;
-  animation: fadeIn 0.8s 0.3s forwards;
-}
-.nav-links {
-  display: flex; align-items: center; gap: 2rem;
-  list-style: none;
-  opacity: 0;
-  animation: fadeIn 0.8s 0.5s forwards;
-}
-.nav-links a {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color 0.25s;
-}
-.nav-links a:hover { color: var(--text); }
+  --bg:#eef4ff;
+  --bg2:#ffffff;
 
-/* Theme toggle */
-.theme-btn {
-  width: 42px; height: 24px;
-  border-radius: 12px;
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  cursor: pointer;
-  position: relative;
-  transition: background var(--transition), border-color var(--transition);
-  flex-shrink: 0;
-}
-.theme-btn::after {
-  content: '';
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--accent);
-  transition: transform var(--transition), background var(--transition);
-}
-[data-theme="dark"] .theme-btn::after { transform: translateX(18px); }
+  --card:rgba(255,255,255,.78);
 
-/* ── HERO ────────────────────────────────────────────────── */
-.hero {
-  min-height: 100svh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 120px 10vw 80px;
-  gap: 5vw;
-}
-.hero-text { }
-.hero-eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 1.4rem;
-  opacity: 0;
-  animation: slideUp 0.9s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-.hero-name {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: 1.8rem;
-  opacity: 0;
-  animation: slideUp 0.9s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-.hero-name em { font-style: italic; color: var(--accent); }
-.hero-tagline {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 38ch;
-  line-height: 1.7;
-  margin-bottom: 2.8rem;
-  font-weight: 300;
-  opacity: 0;
-  animation: slideUp 0.9s 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-.hero-actions {
-  display: flex; gap: 1rem; flex-wrap: wrap;
-  opacity: 0;
-  animation: slideUp 0.9s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-.btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: 2px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: 1.5px solid transparent;
-  transition: all 0.3s ease;
-  font-family: var(--font-body);
-}
-.btn-primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
-}
-.btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-1px);
+  --text:#07101f;
+  --muted:#56637c;
+
+  --accent:#005eff;
+  --accent2:#4ea1ff;
+
+  --border:rgba(0,0,0,.08);
+
+  --shadow:
+  0 10px 40px rgba(0,0,0,.08);
+
 }
 
-/* Hero image */
-.hero-image-wrap {
-  display: flex; justify-content: center; align-items: center;
-  opacity: 0;
-  animation: fadeIn 1.2s 0.6s forwards;
-}
-.hero-image-inner {
-  position: relative;
-  width: min(360px, 38vw);
-}
-.hero-image-inner::before {
-  content: '';
-  position: absolute;
-  inset: -12px -12px 12px 12px;
-  border: 1.5px solid var(--accent2);
-  border-radius: 2px;
-  opacity: 0.4;
-  transition: opacity var(--transition);
-}
-.hero-image-inner:hover::before { opacity: 0.7; }
-.hero-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 2px;
-  display: block;
-}
-.hero-img-placeholder {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--surface);
-  border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1.5px dashed var(--border);
-}
-.hero-img-placeholder span { color: var(--muted); font-size: 0.82rem; letter-spacing: 0.05em; }
+/* ================= RESET ================= */
 
-/* ── SCROLL INDICATOR ───────────────────────────────────── */
-.scroll-hint {
-  position: absolute;
-  bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0;
-  animation: fadeIn 1s 1.5s forwards;
-}
-.scroll-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollPulse 2s 2s infinite;
-}
-@keyframes scrollPulse {
-  0%,100% { opacity: 0.3; transform: scaleY(0.6); }
-  50% { opacity: 1; transform: scaleY(1); }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
-/* ── STATS BAR ───────────────────────────────────────────── */
-.stats-bar {
-  padding: 3rem 10vw;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  background: var(--surface);
-  transition: background var(--transition);
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 300;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 0.35rem;
-}
-.stat-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
+body{
+
+  font-family:'Space Grotesk',sans-serif;
+
+  background:var(--bg);
+  color:var(--text);
+
+  overflow-x:hidden;
+
+  transition:
+  background .4s ease,
+  color .4s ease;
+
 }
 
-/* ── SECTIONS SHARED ─────────────────────────────────────── */
-section { padding: 6rem 10vw; }
-.section-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-}
-.section-lead {
-  font-size: 1rem;
-  color: var(--muted);
-  max-width: 56ch;
-  font-weight: 300;
-  line-height: 1.7;
-  margin-bottom: 3.5rem;
-}
-.section-divider {
-  width: 40px; height: 1px;
-  background: var(--accent);
-  margin: 1.4rem 0 2.5rem;
+/* ================= BACKGROUND ================= */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background:
+  radial-gradient(circle at top left,
+  rgba(78,161,255,.18),
+  transparent 35%),
+
+  radial-gradient(circle at bottom right,
+  rgba(78,161,255,.12),
+  transparent 30%);
+
+  z-index:-5;
+
 }
 
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+#particles{
 
-/* ── ABOUT ───────────────────────────────────────────────── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 5vw;
-  align-items: start;
-}
-.about-text p {
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 1.2rem;
-  font-weight: 300;
-}
-.about-text p strong { color: var(--text); font-weight: 500; }
-.about-sidebar { }
-.info-block {
-  padding: 1.4rem 0;
-  border-top: 1px solid var(--border);
-}
-.info-block:last-child { border-bottom: 1px solid var(--border); }
-.info-key {
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.4rem;
-}
-.info-val { font-size: 0.92rem; font-weight: 400; }
-.info-val a { color: var(--accent); transition: opacity 0.2s; }
-.info-val a:hover { opacity: 0.7; }
+  position:fixed;
+  inset:0;
 
-/* ── SKILLS ──────────────────────────────────────────────── */
-#skills { background: var(--surface); transition: background var(--transition); }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5px;
-  background: var(--border);
-  border: 1.5px solid var(--border);
-}
-.skill-card {
-  background: var(--bg);
-  padding: 2rem 2rem 2.2rem;
-  transition: background var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-.skill-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-.skill-card:hover::after { transform: scaleX(1); }
-.skill-icon {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-}
-.skill-name {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 400;
-  margin-bottom: 0.7rem;
-}
-.skill-desc {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.65;
-  font-weight: 300;
+  z-index:-4;
+  opacity:.5;
+
 }
 
-/* Skill bar */
-.skill-bar-wrap { margin-top: 1rem; }
-.skill-bar-label {
-  display: flex; justify-content: space-between;
-  font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted);
-  margin-bottom: 0.4rem;
-}
-.skill-bar-track {
-  height: 2px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  width: 0;
-  transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+/* ================= SCROLL BAR ================= */
+
+::-webkit-scrollbar{
+  width:8px;
 }
 
-/* ── EDUCATION ───────────────────────────────────────────── */
-.timeline { position: relative; padding-left: 2rem; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0.4rem; bottom: 0;
-  width: 1px;
-  background: var(--border);
-}
-.tl-item {
-  position: relative;
-  margin-bottom: 3.5rem;
-}
-.tl-item:last-child { margin-bottom: 0; }
-.tl-dot {
-  position: absolute;
-  left: -2.37rem; top: 0.4rem;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: var(--bg);
-  transition: background var(--transition), transform 0.3s;
-}
-.tl-item:hover .tl-dot {
-  background: var(--accent);
-  transform: scale(1.3);
-}
-.tl-period {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.35rem;
-}
-.tl-title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 400;
-  margin-bottom: 0.25rem;
-}
-.tl-org {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 0.9rem;
-}
-.tl-body {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.75;
-  font-weight: 300;
-}
-.tl-body ul { padding-left: 1.2rem; margin-top: 0.6rem; }
-.tl-body li { margin-bottom: 0.5rem; }
-
-/* ── RESEARCH ────────────────────────────────────────────── */
-#research { background: var(--surface); transition: background var(--transition); }
-.research-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 2px;
-  padding: 3rem;
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-  transition: background var(--transition), border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-.research-card:hover { transform: translateY(-4px); }
-.research-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-}
-.research-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-.research-institution {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-.research-methods {
-  display: flex; flex-wrap: wrap; gap: 0.5rem;
-  margin-bottom: 1.8rem;
-}
-.tag {
-  display: inline-block;
-  padding: 0.3rem 0.75rem;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  border-radius: 2px;
-  font-weight: 500;
-}
-.research-points { list-style: none; }
-.research-points li {
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--border);
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.7;
-  display: flex; gap: 0.8rem;
-}
-.research-points li::before {
-  content: '→';
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 0.05rem;
+::-webkit-scrollbar-thumb{
+  background:rgba(78,161,255,.35);
+  border-radius:999px;
 }
 
-/* ── EXPERIENCE ──────────────────────────────────────────── */
-.exp-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.exp-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 2px;
-  padding: 2.2rem;
-  transition: background var(--transition), transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.3s;
-}
-.exp-card:hover { transform: translateY(-3px); border-color: var(--accent2); }
-.exp-period {
-  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.5rem;
-}
-.exp-role {
-  font-family: var(--font-display);
-  font-size: 1.2rem; font-weight: 400; margin-bottom: 0.2rem;
-}
-.exp-org { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
-.exp-points { list-style: none; }
-.exp-points li {
-  font-size: 0.85rem; color: var(--muted); line-height: 1.65;
-  padding: 0.4rem 0; border-top: 1px solid var(--border);
-  display: flex; gap: 0.6rem;
-}
-.exp-points li::before { content: '·'; color: var(--accent); flex-shrink: 0; }
+/* ================= PROGRESS BAR ================= */
 
-/* ── LANGUAGES ───────────────────────────────────────────── */
-.lang-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5px;
-  background: var(--border);
-  border: 1.5px solid var(--border);
-  margin-top: 3rem;
-}
-.lang-card {
-  background: var(--bg);
-  padding: 2rem;
-  text-align: center;
-  transition: background var(--transition);
-}
-.lang-name {
-  font-family: var(--font-display);
-  font-size: 1.25rem; font-weight: 400;
-  margin-bottom: 0.4rem;
-}
-.lang-level {
-  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent);
-}
-.lang-dots {
-  display: flex; gap: 4px; justify-content: center;
-  margin-top: 0.7rem;
-}
-.lang-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--border);
-  transition: background var(--transition);
-}
-.lang-dot.filled { background: var(--accent); }
+.progress-bar{
 
-/* ── CV SECTION ──────────────────────────────────────────── */
-#cv { background: var(--surface); transition: background var(--transition); }
-.cv-viewer-wrap {
-  border: 1.5px solid var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow);
-}
-.cv-viewer-bar {
-  background: var(--card);
-  padding: 0.85rem 1.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-}
-.cv-viewer-bar span { font-size: 0.8rem; letter-spacing: 0.05em; color: var(--muted); }
-iframe#cv-frame {
-  width: 100%; height: 680px;
-  border: none;
-  background: var(--surface);
-  display: block;
-}
-.cv-actions {
-  display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
-}
-.cv-note {
-  font-size: 0.78rem; color: var(--muted);
-  margin-top: 1rem; font-weight: 300;
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:0%;
+  height:3px;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  z-index:999999;
+
 }
 
-/* ── CONTACT ─────────────────────────────────────────────── */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5vw;
-  align-items: start;
-}
-.contact-info { }
-.contact-item {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.contact-item:first-of-type { border-top: 1px solid var(--border); }
-.contact-icon { font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
-.contact-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
-.contact-value { font-size: 0.9rem; }
-.contact-value a { color: var(--accent); transition: opacity 0.2s; }
-.contact-value a:hover { opacity: 0.7; }
+/* ================= LOADER ================= */
 
-.form-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 2px;
-  padding: 2.5rem;
-  box-shadow: var(--shadow);
-  transition: background var(--transition);
-}
-.form-lead {
-  font-size: 0.88rem; color: var(--muted); margin-bottom: 1.8rem;
-  font-weight: 300; line-height: 1.65;
-}
-.google-form-embed { width: 100%; border: none; height: 520px; border-radius: 2px; }
+.loader{
 
-/* ── REFERENCES ──────────────────────────────────────────── */
-.ref-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.ref-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 2px;
-  padding: 2rem;
-  transition: background var(--transition), transform 0.35s;
-}
-.ref-card:hover { transform: translateY(-2px); }
-.ref-name {
-  font-family: var(--font-display);
-  font-size: 1.2rem; font-weight: 400;
-  margin-bottom: 0.25rem;
-}
-.ref-title { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.15rem; }
-.ref-org { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
-.ref-email { font-size: 0.85rem; color: var(--accent); }
+  position:fixed;
+  inset:0;
 
-/* ── FOOTER ──────────────────────────────────────────────── */
-footer {
-  text-align: center;
-  padding: 3rem 10vw;
-  border-top: 1px solid var(--border);
-  font-size: 0.78rem;
-  color: var(--muted);
-  font-weight: 300;
-  letter-spacing: 0.04em;
+  background:#050816;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:999999;
+
+  transition:1s ease;
+
 }
 
-/* ── KEYFRAMES ───────────────────────────────────────────── */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
+.loader.hidden{
+
+  opacity:0;
+  visibility:hidden;
+
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
-  .hero-tagline { margin: 0 auto 2rem; }
-  .hero-actions { justify-content: center; }
-  .hero-image-wrap { order: -1; }
-  .hero-image-inner { width: min(240px, 60vw); }
-  .stats-bar { grid-template-columns: repeat(2,1fr); }
-  .about-grid, .contact-grid { grid-template-columns: 1fr; }
-  .exp-grid { grid-template-columns: 1fr; }
-  .ref-grid { grid-template-columns: 1fr; }
-  .lang-grid { grid-template-columns: repeat(2,1fr); }
-  .nav-links { gap: 1rem; }
-  .nav-links li:nth-child(n+4) { display: none; }
-  section { padding: 4rem 6vw; }
-  nav { padding: 0 4vw; }
+.loader-ring{
+
+  width:90px;
+  height:90px;
+
+  border-radius:50%;
+
+  border:2px solid rgba(255,255,255,.08);
+  border-top:2px solid var(--accent);
+
+  animation:spin 1s linear infinite;
+
 }
-@media (max-width: 500px) {
-  .hero { padding: 90px 6vw 60px; }
-  .stats-bar { padding: 2rem 6vw; }
-  .research-card { padding: 1.8rem; }
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
 }
+
+/* ================= NAVBAR ================= */
+
+nav{
+
+  position:fixed;
+
+  width:100%;
+  top:0;
+
+  z-index:1000;
+
+  transition:.4s ease;
+
+  backdrop-filter:blur(18px);
+
+  background:rgba(5,8,22,.45);
+
+}
+
+body.light nav{
+  background:rgba(255,255,255,.65);
+}
+
+nav.scrolled{
+
+  padding:4px 0;
+
+  background:rgba(5,8,22,.75);
+
+  backdrop-filter:blur(28px);
+
+  border-bottom:1px solid var(--border);
+
+}
+
+body.light nav.scrolled{
+  background:rgba(255,255,255,.82);
+}
+
+.nav-container{
+
+  max-width:1450px;
+
+  margin:auto;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 32px;
+
+}
+
+.logo{
+
+  font-size:1.2rem;
+  font-weight:700;
+
+}
+
+.logo span{
+  color:var(--accent);
+}
+
+.nav-links{
+
+  display:flex;
+  align-items:center;
+  gap:28px;
+
+}
+
+.nav-links a{
+
+  text-decoration:none;
+
+  color:var(--muted);
+
+  transition:.3s ease;
+
+  font-size:.95rem;
+
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+/* ================= THEME BUTTON ================= */
+
+.theme-toggle{
+
+  position:fixed;
+
+  right:24px;
+  bottom:24px;
+
+  width:60px;
+  height:60px;
+
+  border-radius:50%;
+
+  border:1px solid var(--border);
+
+  background:rgba(12,18,35,.78);
+
+  backdrop-filter:blur(20px);
+
+  color:var(--text);
+
+  font-size:1.5rem;
+
+  cursor:pointer;
+
+  z-index:99999;
+
+  transition:.35s ease;
+
+  box-shadow:var(--shadow);
+
+}
+
+body.light .theme-toggle{
+  background:rgba(255,255,255,.8);
+}
+
+.theme-toggle:hover{
+  transform:translateY(-5px) scale(1.05);
+}
+
+/* ================= AI ASSISTANT ================= */
+
+.ai-assistant{
+
+  position:fixed;
+
+  left:24px;
+  bottom:24px;
+
+  width:68px;
+  height:68px;
+
+  border-radius:50%;
+
+  background:
+  linear-gradient(
+    145deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:1.7rem;
+
+  cursor:pointer;
+
+  z-index:99999;
+
+  box-shadow:var(--shadow);
+
+  transition:.35s ease;
+
+}
+
+.ai-assistant:hover{
+  transform:scale(1.08);
+}
+
+/* ================= SECTION ================= */
+
+section{
+
+  max-width:1450px;
+
+  margin:auto;
+
+  padding:140px 32px;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+  min-height:100vh;
+
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+
+  align-items:center;
+
+  gap:90px;
+
+}
+
+.hero-text h1{
+
+  font-size:6rem;
+
+  line-height:.95;
+
+  letter-spacing:-4px;
+
+  margin-bottom:25px;
+
+}
+
+.hero-text h1 span{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+.hero-text p{
+
+  color:var(--muted);
+
+  line-height:1.9;
+
+  font-size:1.08rem;
+
+  max-width:750px;
+
+  margin-bottom:45px;
+
+}
+
+.hero-buttons{
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+
+}
+
+.btn{
+
+  padding:16px 30px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  transition:.35s ease;
+
+}
+
+.btn-primary{
+
+  background:var(--accent);
+  color:white;
+
+  box-shadow:
+  0 15px 35px rgba(78,161,255,.35);
+
+}
+
+.btn-primary:hover{
+  transform:translateY(-5px);
+}
+
+.btn-secondary{
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.04);
+
+  color:var(--text);
+
+}
+
+.btn-secondary:hover{
+
+  transform:translateY(-5px);
+
+  background:rgba(78,161,255,.12);
+
+}
+
+.hero-image{
+
+  position:relative;
+
+  display:flex;
+  justify-content:center;
+
+}
+
+.hero-image::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:560px;
+  height:560px;
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(78,161,255,.25),
+    transparent 70%
+  );
+
+  border-radius:50%;
+
+  filter:blur(50px);
+
+}
+
+.hero-image img{
+
+  width:400px;
+  height:400px;
+
+  object-fit:cover;
+
+  border-radius:35px;
+
+  border:1px solid var(--border);
+
+  box-shadow:var(--shadow);
+
+  position:relative;
+  z-index:2;
+
+  animation:float 7s ease-in-out infinite;
+
+}
+
+/* ================= TITLES ================= */
+
+.section-title{
+
+  font-size:3.2rem;
+
+  margin-bottom:20px;
+
+  letter-spacing:-2px;
+
+}
+
+.section-subtitle{
+
+  color:var(--muted);
+
+  line-height:1.9;
+
+  max-width:850px;
+
+  margin-bottom:70px;
+
+}
+
+/* ================= GRID ================= */
+
+.grid{
+
+  display:grid;
+  gap:30px;
+
+}
+
+.grid-2{
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(320px,1fr));
+
+}
+
+/* ================= CARDS ================= */
+
+.card{
+
+  background:var(--card);
+
+  border:1px solid var(--border);
+
+  border-radius:32px;
+
+  padding:35px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  transition:.35s ease;
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:blur(20px);
+
+}
+
+.card::before{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.04),
+    transparent
+  );
+
+  transform:translateX(-100%);
+
+  transition:1s ease;
+
+}
+
+.card:hover::before{
+  transform:translateX(100%);
+}
+
+.card:hover{
+
+  transform:translateY(-8px);
+
+  border-color:
+  rgba(78,161,255,.28);
+
+}
+
+.card h3{
+
+  margin-bottom:15px;
+
+  font-size:1.25rem;
+
+}
+
+.card p{
+
+  color:var(--muted);
+
+  line-height:1.8;
+
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(250px,1fr));
+
+  gap:24px;
+
+}
+
+.dashboard-card{
+
+  padding:40px;
+
+  border-radius:28px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(78,161,255,.12),
+    rgba(10,18,35,.7)
+  );
+
+  border:1px solid var(--border);
+
+  transition:.35s ease;
+
+}
+
+.dashboard-card:hover{
+  transform:translateY(-6px);
+}
+
+.dashboard-card h2{
+
+  font-size:3rem;
+
+  color:var(--accent);
+
+  margin-bottom:10px;
+
+}
+
+/* ================= IMAGE GRID ================= */
+
+.image-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(300px,1fr));
+
+  gap:24px;
+
+}
+
+.research-image{
+
+  width:100%;
+
+  border-radius:24px;
+
+  border:1px solid var(--border);
+
+  transition:.35s ease;
+
+}
+
+.research-image:hover{
+  transform:scale(1.02);
+}
+
+/* ================= SKILLS ================= */
+
+.skill-meter{
+  margin-bottom:30px;
+}
+
+.skill-header{
+
+  display:flex;
+  justify-content:space-between;
+
+  margin-bottom:12px;
+
+}
+
+.skill-bar{
+
+  width:100%;
+  height:12px;
+
+  background:rgba(255,255,255,.05);
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+}
+
+.skill-progress{
+
+  width:0%;
+
+  height:100%;
+
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  transition:2s ease;
+
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+
+  opacity:0;
+
+  transform:
+  translateY(60px)
+  scale(.98);
+
+  transition:1s ease;
+
+}
+
+.reveal.active{
+
+  opacity:1;
+
+  transform:
+  translateY(0)
+  scale(1);
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+
+  padding:90px 40px;
+
+  text-align:center;
+
+  border-radius:35px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(78,161,255,.12),
+    rgba(10,18,35,.7)
+  );
+
+  border:1px solid var(--border);
+
+}
+
+.contact-box h2{
+
+  font-size:3rem;
+
+  margin-bottom:20px;
+
+}
+
+.contact-box p{
+
+  color:var(--muted);
+
+  line-height:1.9;
+
+  max-width:850px;
+
+  margin:auto;
+
+  margin-bottom:40px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+  text-align:center;
+
+  padding:60px 20px;
+
+  color:var(--muted);
+
+  border-top:1px solid var(--border);
+
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.7);
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  z-index:999999;
+
+  padding:30px;
+
+}
+
+.modal-content{
+
+  max-width:900px;
+  width:100%;
+
+  background:var(--bg2);
+
+  border:1px solid var(--border);
+
+  border-radius:30px;
+
+  padding:40px;
+
+  position:relative;
+
+}
+
+.close-modal{
+
+  position:absolute;
+
+  top:18px;
+  right:24px;
+
+  font-size:2rem;
+
+  cursor:pointer;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .hero-text h1{
+    font-size:4rem;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+}
+
+@media(max-width:600px){
+
+  section{
+    padding:100px 22px;
+  }
+
+  .hero-text h1{
+    font-size:3rem;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .hero-image img{
+    width:280px;
+    height:280px;
+  }
+
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-14px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
 </style>
 </head>
+
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────── -->
-<nav>
-  <span class="nav-logo">MHH</span>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#cv">CV</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="theme-btn" id="themeBtn" aria-label="Toggle dark/light mode" title="Toggle theme"></button>
-</nav>
+<!-- ================= LOADER ================= -->
 
-<!-- ── HERO ─────────────────────────────────────────── -->
-<section class="hero" id="home" style="position:relative;">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Pharmacology · Laboratory Sciences · Research</p>
-    <h1 class="hero-name">Mohammad<br><em>Hasibul Haque</em></h1>
-    <p class="hero-tagline">Third-year Pharmacology student at London Metropolitan University — combining rigorous laboratory science with hands-on research in microplastic analysis and molecular biology.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Get in Touch</a>
-      <a href="#cv" class="btn btn-outline">View CV</a>
-      <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
-    </div>
-  </div>
-  <div class="hero-image-wrap">
-    <div class="hero-image-inner">
-      <img src="me.jpg" alt="Mohammad Hasibul Haque" class="hero-img"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="hero-img-placeholder" style="display:none;">
-        <span>me.jpg</span>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- ── STATS BAR ─────────────────────────────────────── -->
-<div class="stats-bar">
-  <div class="stat reveal">
-    <div class="stat-num" data-count="4">0</div>
-    <div class="stat-label">Languages Spoken</div>
-  </div>
-  <div class="stat reveal reveal-delay-1">
-    <div class="stat-num" data-count="2">0</div>
-    <div class="stat-label">Years Lab Experience</div>
-  </div>
-  <div class="stat reveal reveal-delay-2">
-    <div class="stat-num" data-count="6">0</div>
-    <div class="stat-label">Lab Techniques Mastered</div>
-  </div>
-  <div class="stat reveal reveal-delay-3">
-    <div class="stat-num" data-suffix=".0" data-count="5">0</div>
-    <div class="stat-label">GPA — A-Level Science</div>
-  </div>
+<div class="loader" id="loader">
+  <div class="loader-ring"></div>
 </div>
 
-<!-- ── ABOUT ─────────────────────────────────────────── -->
-<section id="about">
-  <div class="reveal">
-    <p class="section-label">About Me</p>
-    <h2 class="section-title">Scientist. Researcher.<br>Problem Solver.</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="about-grid">
-    <div class="about-text reveal reveal-delay-1">
-      <p>I am a <strong>third-year BSc Pharmacology student</strong> at London Metropolitan University, with a consistent record of A-grade module results and a deep passion for laboratory science. My academic journey has taken me from a perfect GPA in Bangladesh's science programmes to the forefront of microplastic research in London.</p>
-      <p>My practical expertise spans <strong>cell and molecular biology</strong> — including PCR, bacterial transformation, recombinant plasmid analysis, and agarose gel electrophoresis — alongside advanced analytical instrumentation such as FTIR spectroscopy, chromatography systems, and spectrophotometry.</p>
-      <p>Currently completing my <strong>final-year dissertation</strong> on microplastic characterisation in commercial chewing gum, I bring a meticulous, evidence-driven approach to every experiment. I work with strict adherence to GLP and health and safety standards, and I take pride in accurate record-keeping and reproducible methodology.</p>
-      <p>Beyond the lab, I am multilingual — fluent in <strong>English, Bengali, Urdu, and Hindi</strong> — and I thrive in both independent and team environments, as demonstrated by my concurrent role in a fast-paced customer-facing setting throughout my degree.</p>
+<!-- ================= PROGRESS BAR ================= -->
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ================= PARTICLES ================= -->
+
+<canvas id="particles"></canvas>
+
+<!-- ================= NAV ================= -->
+
+<nav id="navbar">
+
+  <div class="nav-container">
+
+    <div class="logo">
+      Hasibul<span>.</span>
     </div>
-    <div class="about-sidebar reveal reveal-delay-2">
-      <div class="info-block">
-        <div class="info-key">Location</div>
-        <div class="info-val">London, E7 9QA, United Kingdom</div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">Phone</div>
-        <div class="info-val"><a href="tel:+447405611966">07405 611 966</a></div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">Email</div>
-        <div class="info-val"><a href="mailto:hasibulhaque1000@gmail.com">hasibulhaque1000@gmail.com</a></div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">LinkedIn</div>
-        <div class="info-val"><a href="https://linkedin.com/in/hasibulhaque_001" target="_blank">hasibulhaque_001</a></div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">Degree</div>
-        <div class="info-val">BSc (Hons) Pharmacology — In Progress (2023–Present)</div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">Seeking</div>
-        <div class="info-val">Laboratory Technician / Research Assistant roles</div>
-      </div>
-      <div class="info-block">
-        <div class="info-key">Certificates</div>
-        <div class="info-val">Level 2 Food Hygiene Certificate</div>
-      </div>
+
+    <div class="nav-links">
+
+      <a href="#about">About</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#research">Research</a>
+      <a href="#modules">Modules</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+
     </div>
+
   </div>
+
+</nav>
+
+<!-- ================= THEME ================= -->
+
+<button class="theme-toggle" id="themeToggle">
+☀️
+</button>
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<div class="ai-assistant"
+onclick="openAssistant()">
+🤖
+</div>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div class="hero-text">
+
+    <h1>
+
+      Mohammad
+      <span>Hasibul</span>
+      Haque
+
+    </h1>
+
+    <p>
+
+      Pharmacology student and scientific researcher specialising in microplastic contamination analysis, spectroscopy, analytical chemistry, toxicology, and molecular biology. Experienced in laboratory environments with strong emphasis on scientific precision, research methodologies, and analytical instrumentation.
+
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#contact"
+      class="btn btn-primary">
+      Hire Me
+      </a>
+
+      <a href="cv.pdf"
+      target="_blank"
+      class="btn btn-secondary">
+      View CV
+      </a>
+
+      <a href="cv.pdf"
+      download
+      class="btn btn-secondary">
+      Download CV
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="hero-image">
+    <img src="me.jpg">
+  </div>
+
 </section>
 
-<!-- ── SKILLS ─────────────────────────────────────────── -->
-<section id="skills">
-  <div class="reveal">
-    <p class="section-label">Expertise</p>
-    <h2 class="section-title">Laboratory &amp;<br>Technical Skills</h2>
-    <div class="section-divider"></div>
-    <p class="section-lead">A blend of hands-on molecular biology, advanced analytical instrumentation, and rigorous compliance — developed across three years of BSc study and professional laboratory work.</p>
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="reveal">
+
+  <h2 class="section-title">
+    Research Dashboard
+  </h2>
+
+  <p class="section-subtitle">
+
+    Live overview of scientific research progression, spectroscopy work, laboratory development, and analytical project outcomes.
+
+  </p>
+
+  <div class="dashboard">
+
+    <div class="dashboard-card">
+      <h2>12+</h2>
+      <p>Laboratory Projects</p>
+    </div>
+
+    <div class="dashboard-card">
+      <h2>500+</h2>
+      <p>Laboratory Hours</p>
+    </div>
+
+    <div class="dashboard-card">
+      <h2>6</h2>
+      <p>Analytical Techniques</p>
+    </div>
+
+    <div class="dashboard-card">
+      <h2>2026</h2>
+      <p>Research Publication Goal</p>
+    </div>
+
   </div>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">🧬</div>
-      <div class="skill-name">Molecular Biology</div>
-      <div class="skill-desc">PCR, bacterial transformation, agarose gel electrophoresis, recombinant plasmid analysis — practised extensively across Years 1–3 of BSc Pharmacology.</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Advanced</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-      </div>
-    </div>
-    <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-icon">🔬</div>
-      <div class="skill-name">Analytical Instrumentation</div>
-      <div class="skill-desc">FTIR spectroscopy, spectrophotometry, chromatography (HPLC-adjacent systems), pH measurement — operated and maintained in both academic and professional settings.</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Advanced</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-      </div>
-    </div>
-    <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-icon">🔭</div>
-      <div class="skill-name">Microscopy</div>
-      <div class="skill-desc">Optical microscopy for particle identification, counting, and morphological classification — applied during dissertation research on microplastic characterisation.</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Proficient</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🧪</div>
-      <div class="skill-name">Sample &amp; Reagent Management</div>
-      <div class="skill-desc">Two years professional experience preparing reagents, managing chemical inventories, and maintaining equipment readiness in a live teaching laboratory environment.</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Expert</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
-      </div>
-    </div>
-    <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-icon">🛡️</div>
-      <div class="skill-name">GLP &amp; Health &amp; Safety</div>
-      <div class="skill-desc">Consistent application of COSHH-aware practices, safety protocols, and Good Laboratory Practice standards across all academic and professional environments.</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Expert</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-      </div>
-    </div>
-    <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">Data Analysis &amp; Scientific Writing</div>
-      <div class="skill-desc">Serial dilutions, quantitative analyses, standard curve interpretation, full dissertation authorship; proficient in Microsoft Office Suite (Excel, Word, PowerPoint, Access).</div>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-label"><span>Proficiency</span><span>Strong</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
-      </div>
-    </div>
-  </div>
+
 </section>
 
-<!-- ── EDUCATION ──────────────────────────────────────── -->
-<section id="education">
-  <div class="reveal">
-    <p class="section-label">Education</p>
-    <h2 class="section-title">Academic<br>Journey</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="timeline">
-    <div class="tl-item reveal reveal-delay-1">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2023 – Present</div>
-      <div class="tl-title">BSc (Hons) Pharmacology</div>
-      <div class="tl-org">London Metropolitan University, London</div>
-      <div class="tl-body">
-        <p><strong>Year 3 modules (all graded A):</strong> Toxicology · Systems Pharmacology · Systems Pathology</p>
-        <p><strong>Year 2 modules (all graded A):</strong> Microbiology · Immunity · Spectroscopic Methods</p>
-        <ul>
-          <li>Conducted practical experiments across cell and molecular biology: PCR, bacterial transformation, recombinant plasmid analysis, and agarose gel electrophoresis.</li>
-          <li>Operated and maintained analytical equipment including spectrophotometers, chromatography systems, and pH meters; experienced in troubleshooting instrument and experimental issues.</li>
-          <li>Applied quantitative laboratory skills including serial dilutions, concentration calculations, transformation efficiency, and standard and semi-log curve analysis in assessed laboratory reports.</li>
-          <li>Authored a 2,000-word research report on agarose gel electrophoresis; delivered a presentation on mass spectrometry and NMR spectroscopy to academic staff and peers.</li>
-        </ul>
-      </div>
+<!-- ================= RESEARCH ================= -->
+
+<section id="research" class="reveal">
+
+  <h2 class="section-title">
+    Featured Research Project
+  </h2>
+
+  <p class="section-subtitle">
+
+    Dissertation project investigating microplastic contamination in commercial chewing gum using microscopy analysis and FTIR spectroscopy for polymer identification and comparative spectral analysis.
+
+  </p>
+
+  <div class="grid grid-2">
+
+    <div class="card"
+    onclick="openModal()">
+
+      <h3>
+        Microplastic Spectroscopy Analysis
+      </h3>
+
+      <p>
+
+        FTIR spectra comparison between extracted particles and reference polymer libraries to identify contamination patterns and synthetic polymer signatures.
+
+      </p>
+
+      <br>
+
+      <img src="sample 1.png"
+      class="research-image">
+
     </div>
-    <div class="tl-item reveal reveal-delay-2">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2018 – 2021</div>
-      <div class="tl-title">A Level &amp; O Level — Science</div>
-      <div class="tl-org">ST. Joseph Higher Secondary School, Bangladesh</div>
-      <div class="tl-body">
-        <p><strong>A Level Science:</strong> GPA 5.00 / 5.00</p>
-        <p><strong>O Level Science:</strong> GPA 5.00 / 5.00</p>
-        <p>Awarded a scholarship for outstanding academic performance at O Level.</p>
-      </div>
+
+    <div class="card">
+
+      <h3>
+        Microscopy Identification
+      </h3>
+
+      <p>
+
+        Microscopic visualisation of extracted fibres and particulate contaminants observed during filtration and digestion procedures.
+
+      </p>
+
+      <br>
+
+      <img src="microplastic1.jpeg"
+      class="research-image">
+
     </div>
+
   </div>
+
 </section>
 
-<!-- ── RESEARCH ────────────────────────────────────────── -->
-<section id="research">
-  <div class="reveal">
-    <p class="section-label">Research</p>
-    <h2 class="section-title">Final Year<br>Dissertation</h2>
-    <div class="section-divider"></div>
+<!-- ================= RESEARCH GALLERY ================= -->
+
+<section class="reveal">
+
+  <h2 class="section-title">
+    Research Visual Gallery
+  </h2>
+
+  <p class="section-subtitle">
+
+    Spectroscopy outputs, microscopy observations, and extracted microplastic contamination samples from current research investigations.
+
+  </p>
+
+  <div class="image-grid">
+
+    <img src="sample 1.png"
+    class="research-image">
+
+    <img src="Sample 2.png"
+    class="research-image">
+
+    <img src="Sample 3.png"
+    class="research-image">
+
+    <img src="microplastic1.jpeg"
+    class="research-image">
+
+    <img src="microplastic2.jpeg"
+    class="research-image">
+
+    <img src="microplastic3.jpeg"
+    class="research-image">
+
   </div>
-  <div class="research-card reveal reveal-delay-1">
-    <div class="research-title">Qualitative and Quantitative Analysis of Microplastics in Commercial Chewing Gum</div>
-    <div class="research-institution">London Metropolitan University · 2025 – Present</div>
-    <div class="research-methods">
-      <span class="tag">FTIR Spectroscopy</span>
-      <span class="tag">Optical Microscopy</span>
-      <span class="tag">KOH Digestion</span>
-      <span class="tag">Artificial Saliva Simulation</span>
-      <span class="tag">Particle Morphology</span>
-      <span class="tag">Spectral Library Analysis</span>
-    </div>
-    <ul class="research-points">
-      <li>Designed and conducted a laboratory-based study to extract and characterise microplastic particles from commercial chewing gum samples using artificial saliva and KOH solution to simulate oral and chemical digestion conditions.</li>
-      <li>Used optical microscopy to identify and count suspected microplastic particles, applying systematic visual analysis techniques to classify particles by size, shape, and colour.</li>
-      <li>Confirmed plastic polymer composition by obtaining FTIR spectra and cross-referencing results against an online spectral library database — demonstrating competency in analytical instrumentation and data interpretation.</li>
-      <li>Developed skills in experimental design, method optimisation, and scientific writing, producing a full research dissertation in accordance with academic standards.</li>
-    </ul>
-  </div>
+
 </section>
 
-<!-- ── EXPERIENCE ─────────────────────────────────────── -->
-<section id="experience">
-  <div class="reveal">
-    <p class="section-label">Experience</p>
-    <h2 class="section-title">Professional<br>History</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="exp-grid">
-    <div class="exp-card reveal reveal-delay-1">
-      <div class="exp-period">Jul 2021 – Jul 2023</div>
-      <div class="exp-role">Assistant Laboratory Technician</div>
-      <div class="exp-org">Udvash Coaching Centre, Dhaka, Bangladesh</div>
-      <ul class="exp-points">
-        <li>Prepared reagents, chemicals, and apparatus for laboratory sessions, ensuring all equipment was available, functional, correctly labelled, and safely stored.</li>
-        <li>Monitored stock levels of chemicals and consumables, identifying shortages and arranging replenishment to maintain uninterrupted operations.</li>
-        <li>Identified and resolved equipment faults prior to practical sessions, maintaining a safe, clean, and efficient working environment at all times.</li>
-        <li>Maintained detailed, accurate records of experimental results and laboratory activities ensuring consistency across student evaluations.</li>
-        <li>Supported students and teaching staff during practical sessions by demonstrating safe equipment use, explaining procedures, and troubleshooting issues.</li>
-      </ul>
-    </div>
-    <div class="exp-card reveal reveal-delay-2">
-      <div class="exp-period">Sep 2023 – Present</div>
-      <div class="exp-role">Front of House Team Member</div>
-      <div class="exp-org">German Doner Kebab, London</div>
-      <ul class="exp-points">
-        <li>Working reliably as part of a team in a fast-paced environment, demonstrating time management, attention to detail, and clear communication under pressure.</li>
-        <li>Maintaining hygiene and food safety standards in line with food safety regulations — directly transferable to laboratory health and safety requirements.</li>
-        <li>Holder of a Level 2 Food Hygiene Certificate, demonstrating formal training in safe working practices and regulatory compliance.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+<!-- ================= MODULES ================= -->
 
-<!-- ── LANGUAGES ──────────────────────────────────────── -->
-<section id="languages" style="padding-top:0;">
-  <div class="reveal">
-    <p class="section-label">Languages</p>
-    <h2 class="section-title">Multilingual<br>Communication</h2>
-    <div class="section-divider"></div>
-    <p class="section-lead">Fluent in four languages — a distinct advantage in diverse research, clinical, and industrial environments.</p>
-  </div>
-  <div class="lang-grid reveal reveal-delay-1">
-    <div class="lang-card">
-      <div class="lang-name">English</div>
-      <div class="lang-level">Fluent</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-      </div>
-    </div>
-    <div class="lang-card">
-      <div class="lang-name">Bengali</div>
-      <div class="lang-level">Native</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-      </div>
-    </div>
-    <div class="lang-card">
-      <div class="lang-name">Urdu</div>
-      <div class="lang-level">Fluent</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div><div class="lang-dot"></div>
-      </div>
-    </div>
-    <div class="lang-card">
-      <div class="lang-name">Hindi</div>
-      <div class="lang-level">Fluent</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div><div class="lang-dot"></div>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="modules" class="reveal">
 
-<!-- ── CV ─────────────────────────────────────────────── -->
-<section id="cv">
-  <div class="reveal">
-    <p class="section-label">Curriculum Vitae</p>
-    <h2 class="section-title">View &amp; Download<br>Full CV</h2>
-    <div class="section-divider"></div>
-    <p class="section-lead">Preview the full CV below, or download a copy directly to your device.</p>
-  </div>
-  <div class="cv-viewer-wrap reveal reveal-delay-1">
-    <div class="cv-viewer-bar">
-      <span>Mohammad Hasibul Haque — Curriculum Vitae</span>
-      <a href="cv.pdf" download class="btn btn-outline" style="padding:0.4rem 1rem; font-size:0.72rem;">⬇ Download</a>
-    </div>
-    <iframe id="cv-frame" src="cv.pdf" title="Mohammad Hasibul Haque CV"></iframe>
-  </div>
-  <div class="cv-actions reveal reveal-delay-2">
-    <a href="cv.pdf" target="_blank" class="btn btn-outline">Open in New Tab</a>
-    <a href="cv.pdf" download class="btn btn-primary">⬇ Download PDF</a>
-  </div>
-  <p class="cv-note reveal">The CV opens in a built-in viewer above. If it does not render, use the "Open in New Tab" or "Download PDF" buttons.</p>
-</section>
+  <h2 class="section-title">
+    Academic Modules & Scientific Training
+  </h2>
 
-<!-- ── REFERENCES ─────────────────────────────────────── -->
-<section id="references">
-  <div class="reveal">
-    <p class="section-label">References</p>
-    <h2 class="section-title">Professional<br>References</h2>
-    <div class="section-divider"></div>
-    <p class="section-lead">Available upon request. Two referees who can speak to both academic and professional capability.</p>
-  </div>
-  <div class="ref-grid">
-    <div class="ref-card reveal reveal-delay-1">
-      <div class="ref-name">Dr. Priyanka Ganguly</div>
-      <div class="ref-title">Lecturer, Analytical Chemistry</div>
-      <div class="ref-org">London Metropolitan University, London N7 8DB</div>
-      <div class="ref-email"><a href="mailto:p.ganguly@londonmet.ac.uk">p.ganguly@londonmet.ac.uk</a></div>
-    </div>
-    <div class="ref-card reveal reveal-delay-2">
-      <div class="ref-name">Mahmudul Hasan Sohag</div>
-      <div class="ref-title">Branch Manager</div>
-      <div class="ref-org">Udvash-Unmesh Academy, Dhaka 1207, Bangladesh</div>
-      <div class="ref-email"><a href="mailto:m.hasansohag@yahoo.com">m.hasansohag@yahoo.com</a></div>
-    </div>
-  </div>
-</section>
+  <p class="section-subtitle">
 
-<!-- ── CONTACT ────────────────────────────────────────── -->
-<section id="contact" style="background: var(--surface); transition: background var(--transition);">
-  <div class="reveal">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Let's Connect</h2>
-    <div class="section-divider"></div>
-    <p class="section-lead">Interested in discussing a laboratory technician role, research collaboration, or just want to learn more? Reach out directly or use the form below.</p>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-info reveal reveal-delay-1">
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Location</div>
-          <div class="contact-value">London, E7 9QA, United Kingdom</div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div>
-          <div class="contact-label">Phone</div>
-          <div class="contact-value"><a href="tel:+447405611966">07405 611 966</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:hasibulhaque1000@gmail.com">hasibulhaque1000@gmail.com</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">💼</div>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value"><a href="https://linkedin.com/in/hasibulhaque_001" target="_blank">linkedin.com/in/hasibulhaque_001</a></div>
-        </div>
-      </div>
-      <div style="margin-top:2.5rem;">
-        <p style="font-size:0.85rem; color:var(--muted); font-weight:300; line-height:1.75;">
-          I am currently <strong style="color:var(--text);">open to laboratory technician and research assistant positions</strong> in London and surrounding areas. I am available for immediate start and happy to discuss both full-time and part-time opportunities.
-        </p>
-      </div>
-    </div>
-    <div class="form-card reveal reveal-delay-2">
-      <p class="form-lead">Send me a message directly via the form below. I'll aim to respond within 24 hours.</p>
-      <!-- Replace the src below with your own Google Form embed URL -->
-      <iframe
-        class="google-form-embed"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSf_PLACEHOLDER/viewform?embedded=true"
-        title="Contact Mohammad"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-      >Loading form…</iframe>
-      <p style="font-size:0.72rem; color:var(--muted); margin-top:1rem; font-weight:300;">
-        💡 To activate the contact form, replace the iframe src with your Google Form embed link. 
-        <a href="https://support.google.com/docs/answer/2839588" target="_blank" style="color:var(--accent);">How to embed a Google Form →</a>
+    Academic and laboratory modules completed throughout the Pharmacology degree, building expertise in analytical chemistry, spectroscopy, toxicology, microbiology, and molecular biology.
+
+  </p>
+
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h3>Analytical Chemistry</h3>
+
+      <p>
+        Spectroscopy, chromatography, structural analysis, and laboratory analytical techniques.
       </p>
     </div>
+
+    <div class="card">
+      <h3>Molecular Biology</h3>
+
+      <p>
+        PCR, gel electrophoresis, recombinant DNA analysis, and bacterial transformation procedures.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Toxicology</h3>
+
+      <p>
+        Environmental toxicology, exposure pathways, toxic effects, and contamination analysis.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Microbiology</h3>
+
+      <p>
+        Laboratory culturing techniques, contamination control, sterile procedures, and microbial systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Pharmacology</h3>
+
+      <p>
+        Drug interactions, pharmacodynamics, pharmacokinetics, and therapeutic mechanisms.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Scientific Research Methods</h3>
+
+      <p>
+        Research design, statistical analysis, laboratory reporting, and scientific communication.
+      </p>
+    </div>
+
   </div>
+
 </section>
 
-<!-- ── FOOTER ─────────────────────────────────────────── -->
+<!-- ================= PUBLICATIONS ================= -->
+
+<section class="reveal">
+
+  <h2 class="section-title">
+    Current & Future Research
+  </h2>
+
+  <div class="grid grid-2">
+
+    <div class="card">
+
+      <h3>
+        Microplastic Contamination Research
+      </h3>
+
+      <p>
+
+        Current dissertation project investigating synthetic polymer contamination within commercial chewing gum products using microscopy and FTIR spectroscopy.
+
+      </p>
+
+      <br>
+
+      <a href="project.pdf"
+      target="_blank"
+      class="btn btn-secondary">
+      Read Research Project
+      </a>
+
+    </div>
+
+    <div class="card">
+
+      <h3>
+        Future Scientific Work
+      </h3>
+
+      <p>
+
+        Planned future research focused on environmental toxicology, polymer exposure pathways, and analytical contamination identification methods.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills" class="reveal">
+
+  <h2 class="section-title">
+    Technical Skills
+  </h2>
+
+  <div class="skill-meter">
+
+    <div class="skill-header">
+      <span>PCR</span>
+      <span>90%</span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-progress"
+      data-progress="90"></div>
+    </div>
+
+  </div>
+
+  <div class="skill-meter">
+
+    <div class="skill-header">
+      <span>FTIR Spectroscopy</span>
+      <span>88%</span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-progress"
+      data-progress="88"></div>
+    </div>
+
+  </div>
+
+  <div class="skill-meter">
+
+    <div class="skill-header">
+      <span>Molecular Biology</span>
+      <span>87%</span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-progress"
+      data-progress="87"></div>
+    </div>
+
+  </div>
+
+  <div class="skill-meter">
+
+    <div class="skill-header">
+      <span>Analytical Chemistry</span>
+      <span>92%</span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-progress"
+      data-progress="92"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= WHY HIRE ME ================= -->
+
+<section class="reveal">
+
+  <h2 class="section-title">
+    Why Hire Me
+  </h2>
+
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h3>Research Focused</h3>
+      <p>
+        Strong analytical mindset with scientific laboratory experience and research precision.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Adaptable</h3>
+      <p>
+        Able to quickly integrate into laboratory and research environments.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Scientific Communication</h3>
+      <p>
+        Experienced in academic presentations, reporting, and technical explanation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Compliance & Precision</h3>
+      <p>
+        Familiar with laboratory safety procedures, analytical workflows, and quality standards.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="reveal">
+
+  <div class="contact-box">
+
+    <h2>
+      Available For Opportunities
+    </h2>
+
+    <p>
+
+      Current Location:
+      London, United Kingdom
+
+      <br><br>
+
+      Open to:
+      Laboratory, analytical chemistry, spectroscopy, toxicology, and scientific research opportunities.
+
+      <br><br>
+
+      Typical response time:
+      Within 24 hours.
+
+    </p>
+
+    <div class="hero-buttons"
+    style="justify-content:center;">
+
+      <a href="mailto:hasibulhaque1000@gmail.com"
+      class="btn btn-primary">
+      Email Me
+      </a>
+
+      <a href="project.pdf"
+      target="_blank"
+      class="btn btn-secondary">
+      View Research PDF
+      </a>
+
+      <a href="https://forms.gle/uoFmwB84rg14EhrS9"
+      target="_blank"
+      class="btn btn-secondary">
+      Contact Form
+      </a>
+
+      <a href="https://www.linkedin.com/in/hasibul-haque-nishat"
+      target="_blank"
+      class="btn btn-secondary">
+      LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
-  <p>© 2025 Mohammad Hasibul Haque · London, UK · <a href="mailto:hasibulhaque1000@gmail.com" style="color:var(--accent);">hasibulhaque1000@gmail.com</a></p>
-  <p style="margin-top:0.5rem;">BSc (Hons) Pharmacology · London Metropolitan University</p>
+
+  © 2026 Mohammad Hasibul Haque — Scientific Portfolio
+
 </footer>
 
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="projectModal">
+
+  <div class="modal-content">
+
+    <div class="close-modal"
+    onclick="closeModal()">
+    ×
+    </div>
+
+    <h2>
+      Research Project Details
+    </h2>
+
+    <br>
+
+    <p>
+
+      <strong>Methods:</strong>
+      Digestion protocols, microscopy analysis, FTIR spectroscopy, filtration systems, and polymer library comparison.
+
+      <br><br>
+
+      <strong>Research Focus:</strong>
+      Identification of synthetic polymer contaminants extracted from chewing gum samples.
+
+      <br><br>
+
+      <strong>Key Findings:</strong>
+      Detection of fibre-like contaminants and spectral matches indicating synthetic polymer presence.
+
+      <br><br>
+
+      <strong>Analytical Techniques:</strong>
+      FTIR spectroscopy, microscopy imaging, and comparative spectral interpretation.
+
+    </p>
+
+    <br>
+
+    <a href="project.pdf"
+    target="_blank"
+    class="btn btn-primary">
+    Open Full Research PDF
+    </a>
+
+  </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
-/* ── THEME TOGGLE ─────────────────────────────────────── */
-(function () {
-  const btn = document.getElementById('themeBtn');
-  const root = document.documentElement;
 
-  // Detect system preference
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const stored = localStorage.getItem('theme');
-  const initial = stored || (prefersDark ? 'dark' : 'light');
-  root.setAttribute('data-theme', initial);
+/* ================= LOADER ================= */
 
-  btn.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+window.addEventListener("load", () => {
 
-  // Listen for system changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) {
-      root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+  document
+  .getElementById("loader")
+  .classList
+  .add("hidden");
+
+});
+
+/* ================= THEME ================= */
+
+const body = document.body;
+
+const themeToggle =
+document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+
+  if(body.classList.contains("light")){
+    themeToggle.innerHTML = "🌙";
+  } else {
+    themeToggle.innerHTML = "☀️";
+  }
+
+}
+
+function applyTheme(theme){
+
+  if(theme === "light"){
+    body.classList.add("light");
+  } else {
+    body.classList.remove("light");
+  }
+
+  updateThemeIcon();
+
+}
+
+const savedTheme =
+localStorage.getItem("theme");
+
+if(savedTheme){
+
+  applyTheme(savedTheme);
+
+} else {
+
+  const prefersLight =
+  window.matchMedia(
+  "(prefers-color-scheme: light)"
+  ).matches;
+
+  applyTheme(
+  prefersLight ? "light" : "dark"
+  );
+
+}
+
+themeToggle.addEventListener("click", () => {
+
+  body.classList.toggle("light");
+
+  const currentTheme =
+  body.classList.contains("light")
+  ? "light"
+  : "dark";
+
+  localStorage.setItem(
+  "theme",
+  currentTheme
+  );
+
+  updateThemeIcon();
+
+});
+
+/* ================= NAVBAR ================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 50){
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+
+});
+
+/* ================= PROGRESS BAR ================= */
+
+const progressBar =
+document.getElementById("progressBar");
+
+window.addEventListener("scroll", () => {
+
+  const scrollTop =
+  document.documentElement.scrollTop;
+
+  const scrollHeight =
+  document.documentElement.scrollHeight -
+  document.documentElement.clientHeight;
+
+  const progress =
+  (scrollTop / scrollHeight) * 100;
+
+  progressBar.style.width =
+  progress + "%";
+
+});
+
+/* ================= REVEAL ================= */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+function revealSections(){
+
+  reveals.forEach(section => {
+
+    const top =
+    section
+    .getBoundingClientRect()
+    .top;
+
+    if(top < window.innerHeight - 100){
+      section.classList.add("active");
     }
-  });
-})();
 
-/* ── INTERSECTION OBSERVER — REVEAL ─────────────────── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+  });
+
+}
+
+window.addEventListener(
+"scroll",
+revealSections
+);
+
+revealSections();
+
+/* ================= PARTICLES ================= */
+
+const canvas =
+document.getElementById("particles");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+const particles = [];
+
+for(let i=0;i<90;i++){
+
+  particles.push({
+
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+
+    radius:Math.random()*2,
+
+    dx:(Math.random()-.5)*0.4,
+    dy:(Math.random()-.5)*0.4
+
+  });
+
+}
+
+function animateParticles(){
+
+  ctx.clearRect(
+  0,
+  0,
+  canvas.width,
+  canvas.height
+  );
+
+  particles.forEach(p => {
+
+    ctx.beginPath();
+
+    ctx.arc(
+    p.x,
+    p.y,
+    p.radius,
+    0,
+    Math.PI*2
+    );
+
+    ctx.fillStyle =
+    "rgba(78,161,255,.5)";
+
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if(
+      p.x < 0 ||
+      p.x > canvas.width
+    ){
+      p.dx *= -1;
     }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ── SKILL BARS ──────────────────────────────────────── */
-const barObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const fill = entry.target.querySelector('.skill-bar-fill');
-      if (fill) {
-        setTimeout(() => {
-          fill.style.width = fill.dataset.width + '%';
-        }, 200);
-      }
-      barObserver.unobserve(entry.target);
+    if(
+      p.y < 0 ||
+      p.y > canvas.height
+    ){
+      p.dy *= -1;
     }
+
   });
-}, { threshold: 0.3 });
 
-document.querySelectorAll('.skill-card').forEach(card => barObserver.observe(card));
+  requestAnimationFrame(
+  animateParticles
+  );
 
-/* ── ANIMATED COUNTERS ───────────────────────────────── */
-const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      let current = 0;
-      const step = target / 40;
-      const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = (current < target ? Math.floor(current) : target) + suffix;
-        if (current >= target) clearInterval(timer);
-      }, 30);
-      countObserver.unobserve(el);
+}
+
+animateParticles();
+
+/* ================= SKILLS ================= */
+
+const skillBars =
+document.querySelectorAll(".skill-progress");
+
+function animateSkills(){
+
+  skillBars.forEach(bar => {
+
+    const width =
+    bar.getAttribute("data-progress");
+
+    const top =
+    bar.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 50){
+
+      bar.style.width =
+      width + "%";
+
     }
+
   });
-}, { threshold: 0.5 });
 
-document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+}
 
-/* ── SMOOTH NAV UNDERLINE ────────────────────────────── */
-const sections = document.querySelectorAll('section[id], div[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const scrollSpy = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + id ? 'var(--text)' : '';
-      });
-    }
-  });
-}, { threshold: 0.45 });
-sections.forEach(s => scrollSpy.observe(s));
+window.addEventListener(
+"scroll",
+animateSkills
+);
 
-/* ── NAV SHADOW ON SCROLL ────────────────────────────── */
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.boxShadow =
-    window.scrollY > 10 ? '0 2px 16px rgba(0,0,0,0.08)' : 'none';
-}, { passive: true });
+animateSkills();
+
+/* ================= MODAL ================= */
+
+function openModal(){
+
+  document
+  .getElementById("projectModal")
+  .style.display = "flex";
+
+}
+
+function closeModal(){
+
+  document
+  .getElementById("projectModal")
+  .style.display = "none";
+
+}
+
+/* ================= AI ASSISTANT ================= */
+
+function openAssistant(){
+
+  alert(
+
+`AI Assistant
+
+Hello — I'm Hasibul's portfolio assistant.
+
+You can ask about:
+• Laboratory Experience
+• FTIR Spectroscopy
+• Molecular Biology
+• Research Project
+• Academic Modules
+• CV Information
+• Availability
+
+Please use the contact form or LinkedIn for direct communication.`
+
+  );
+
+}
+
 </script>
+
 </body>
 </html>
